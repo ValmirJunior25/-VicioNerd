@@ -1,7 +1,10 @@
-﻿namespace VicioNerd.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace VicioNerd.Models
 {
     internal class Jogo
     {
+        [Key]
         public int Id { get; private set; } = 0;
         public string Nome { get; set; } = "";
         public string Desenvolvedora { get; set; } = "";

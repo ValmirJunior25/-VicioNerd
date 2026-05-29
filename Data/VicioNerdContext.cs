@@ -12,9 +12,21 @@ namespace VicioNerd.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            var caminho = Path.Combine( AppDomain.CurrentDomain.BaseDirectory, "Data", "vicionerd.db");
+            
+            // Caminho absoluto para a pasta
+            var pastaBanco = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
+
+            // Verifica e cria usando o caminho
+            if (!Directory.Exists(pastaBanco))
+            {
+                Directory.CreateDirectory(pastaBanco);
+            }
+
+            // Banco dentro dessa mesma pasta
+            var caminho = Path.Combine(pastaBanco, "vicionerd.db");
 
             options.UseSqlite($"Data Source={caminho}");
         }
+
     }
 }
